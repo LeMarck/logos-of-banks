@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/logos-of-banks/static/css/main.fa092618.chunk.css",
-    "main.js": "/logos-of-banks/static/js/main.f0fde3b2.chunk.js",
-    "main.js.map": "/logos-of-banks/static/js/main.f0fde3b2.chunk.js.map",
+    "main.css": "/logos-of-banks/static/css/main.f38d2670.chunk.css",
+    "main.js": "/logos-of-banks/static/js/main.1f22a7dd.chunk.js",
+    "main.js.map": "/logos-of-banks/static/js/main.1f22a7dd.chunk.js.map",
     "runtime-main.js": "/logos-of-banks/static/js/runtime-main.3201479f.js",
     "runtime-main.js.map": "/logos-of-banks/static/js/runtime-main.3201479f.js.map",
-    "static/js/2.e914a28d.chunk.js": "/logos-of-banks/static/js/2.e914a28d.chunk.js",
-    "static/js/2.e914a28d.chunk.js.map": "/logos-of-banks/static/js/2.e914a28d.chunk.js.map",
+    "static/js/2.73eef0db.chunk.js": "/logos-of-banks/static/js/2.73eef0db.chunk.js",
+    "static/js/2.73eef0db.chunk.js.map": "/logos-of-banks/static/js/2.73eef0db.chunk.js.map",
     "index.html": "/logos-of-banks/index.html",
-    "precache-manifest.3b31f07aa3916830be70d51df84807dc.js": "/logos-of-banks/precache-manifest.3b31f07aa3916830be70d51df84807dc.js",
+    "precache-manifest.543b0751046da5e83b1f7c811cc347e6.js": "/logos-of-banks/precache-manifest.543b0751046da5e83b1f7c811cc347e6.js",
     "service-worker.js": "/logos-of-banks/service-worker.js",
-    "static/css/main.fa092618.chunk.css.map": "/logos-of-banks/static/css/main.fa092618.chunk.css.map",
-    "static/js/2.e914a28d.chunk.js.LICENSE.txt": "/logos-of-banks/static/js/2.e914a28d.chunk.js.LICENSE.txt",
+    "static/css/main.f38d2670.chunk.css.map": "/logos-of-banks/static/css/main.f38d2670.chunk.css.map",
+    "static/js/2.73eef0db.chunk.js.LICENSE.txt": "/logos-of-banks/static/js/2.73eef0db.chunk.js.LICENSE.txt",
     "static/media/AKBars.svg": "/logos-of-banks/static/media/AKBars.43e1b8ed.svg",
     "static/media/AKIBank.svg": "/logos-of-banks/static/media/AKIBank.cc9a0a8d.svg",
     "static/media/ATB.svg": "/logos-of-banks/static/media/ATB.c99e8511.svg",
@@ -146,12 +146,13 @@
     "static/media/VserossiyskiyBankRazvitiyaRegionov.svg": "/logos-of-banks/static/media/VserossiyskiyBankRazvitiyaRegionov.a23a174f.svg",
     "static/media/VuzBank.svg": "/logos-of-banks/static/media/VuzBank.66757e49.svg",
     "static/media/Zapsibkombank.svg": "/logos-of-banks/static/media/Zapsibkombank.e59ebd98.svg",
-    "static/media/Zenit.svg": "/logos-of-banks/static/media/Zenit.b769aaa0.svg"
+    "static/media/Zenit.svg": "/logos-of-banks/static/media/Zenit.b769aaa0.svg",
+    "static/media/logo.svg": "/logos-of-banks/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.3201479f.js",
-    "static/js/2.e914a28d.chunk.js",
-    "static/css/main.fa092618.chunk.css",
-    "static/js/main.f0fde3b2.chunk.js"
+    "static/js/2.73eef0db.chunk.js",
+    "static/css/main.f38d2670.chunk.css",
+    "static/js/main.1f22a7dd.chunk.js"
   ]
 }
