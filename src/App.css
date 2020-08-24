@@ -1,0 +1,31 @@
+.App {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.App-round {
+  margin: 10px;
+  width: 74px;
+  height: 74px;
+  position: relative;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-bg {
+  width: 74px;
+  height: 74px;
+  /*opacity: .7;*/
+  border-radius: 50%;
+}
+
+.App-icon {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
