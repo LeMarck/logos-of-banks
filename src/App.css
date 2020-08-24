@@ -17,7 +17,6 @@
 .App-bg {
   width: 74px;
   height: 74px;
-  /*opacity: .7;*/
   border-radius: 50%;
 }
 
@@ -28,4 +27,29 @@
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+  animation: App-logo-spin infinite 20s linear;
+}
+
+.App-loading {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import logo from './logo.svg';
 import * as Icons from './iconsExport';
 
 const ALLOWABLE_COLOR_BOT_LINE = 30;
@@ -100,6 +101,10 @@ function App() {
 
     return (
         <section className="App">
+            {!colors.length && <section className="App-loading">
+                <img src={logo} className="App-logo" alt="logo"/>
+                <p>Loading...</p>
+            </section>}
             {colors.map((color, i) =>
                 <div key={i} className={'App-round'}>
                     <div className={'App-bg'} style={{ background: color }}/>
