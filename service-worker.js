@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/logos-of-banks/precache-manifest.543b0751046da5e83b1f7c811cc347e6.js"
+  "/logos-of-banks/precache-manifest.d0ed627cc2d35501df6322828c00eef4.js"
 );
 
 self.addEventListener('message', (event) => {
