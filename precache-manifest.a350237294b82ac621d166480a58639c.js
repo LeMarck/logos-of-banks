@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e69827e1b8978e12c0afdae299c5bb02",
+    "revision": "0177caaff45c54e5728ed09ffc167eec",
     "url": "/logos-of-banks/index.html"
   },
   {
-    "revision": "07fa107ff07f42c93173",
+    "revision": "8e57d51df1d1a1b64eda",
     "url": "/logos-of-banks/static/css/main.f38d2670.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/logos-of-banks/static/js/2.dd955673.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "07fa107ff07f42c93173",
-    "url": "/logos-of-banks/static/js/main.672b61d1.chunk.js"
+    "revision": "8e57d51df1d1a1b64eda",
+    "url": "/logos-of-banks/static/js/main.14d76441.chunk.js"
   },
   {
     "revision": "d3c8838a194f1dd6b580",
