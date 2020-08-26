@@ -68,3 +68,32 @@ export function getColor(sourceImage: HTMLImageElement, quality: number = 10): [
 
     return cmap.palette()[0];
 }
+interface HSLColor {
+    h: number;
+    s: number;
+    l: number;
+}
+
+export function RGBToHSL({ r, g, b }: RGBColor): HSLColor {
+    r /= 255;
+    g /= 255;
+    b /= 255;
+
+    const cmin = Math.min(r, g, b);
+    const cmax = Math.max(r, g, b);
+    const delta = cmax - cmin;
+
+    let h = delta === 0 ? 0 : (cmax === r ? ((g - b) / delta) % 6 : (cmax === g ? (b - r) / delta + 2 : (r - g) / delta + 4))
+    h = Math.round(h * 60);
+
+    if (h < 0) h += 360;
+
+    let l = (cmax + cmin) / 2;
+
+    let s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+
+    s = +(s * 100).toFixed(1);
+    l = +(l * 100).toFixed(1);
+
+    return { h, s, l };
+}

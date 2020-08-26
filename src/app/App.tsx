@@ -29,8 +29,9 @@ export function App(): JSX.Element {
 
                 const image = await uploadImage(imgSrc)
                 const [r, g, b] = getColor(image);
+                const isDark = (r * 299 + g * 587 + b * 114) / 1000 < 128;
 
-                newColors.push(`rgba(${r}, ${g}, ${b}, .4)`);
+                newColors.push(`rgba(${r}, ${g}, ${b}, .${isDark ? 4 : 6})`);
                 newIcons.push(imgSrc);
             }
 
