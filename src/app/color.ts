@@ -29,20 +29,20 @@ export function isAllowedColor({ r, g, b }: RGBColor): boolean {
     return !(firstDiff && secondDiff && thirdDiff && ((r < ALLOWABLE_COLOR_BOT_LINE) || (r > ALLOWABLE_COLOR_TOP_LINE)));
 }
 
-export function createPixelArray(imgData: Uint8ClampedArray, pixelCount: number, quality: number): Array<Array<number>> {
+export function createPixelArray(imgData: Uint8ClampedArray): Array<Array<number>> {
     const pixels = imgData;
+    const pixelCount = imgData.length;
     const pixelArray = [];
 
-    for (let i = 0; i < pixelCount; i += quality) {
-        const offset = i * 4;
-        const r = pixels[offset];
-        const g = pixels[offset + 1];
-        const b = pixels[offset + 2];
-        const a = pixels[offset + 3];
+    for (let i = 0; i < pixelCount; i += 4) {
+        const r = pixels[i];
+        const g = pixels[i + 1];
+        const b = pixels[i + 2];
+        // const a = pixels[i + 3];
 
-        const rgb = rgba2rgb({ r, g, b, a });
+        // const rgb = rgba2rgb({ r, g, b, a });
 
-        if (isAllowedColor(rgb)) {
+        if (isAllowedColor({ r, g, b })) {
             pixelArray.push([r, g, b]);
         }
     }
@@ -50,7 +50,7 @@ export function createPixelArray(imgData: Uint8ClampedArray, pixelCount: number,
     return pixelArray;
 }
 
-export function getColor(sourceImage: HTMLImageElement, quality: number = 10): [number, number, number] {
+export function getColor(sourceImage: HTMLImageElement, quality: number = 2): [number, number, number] {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d')!;
 
@@ -60,11 +60,11 @@ export function getColor(sourceImage: HTMLImageElement, quality: number = 10): [
     ctx.drawImage(sourceImage, 0, 0, sourceImage.width, sourceImage.height);
 
     const imageData = ctx.getImageData(0, 0, sourceImage.naturalWidth, sourceImage.naturalHeight);
-    const pixelCount = sourceImage.naturalWidth * sourceImage.naturalHeight;
 
-    const pixelArray = createPixelArray(imageData.data, pixelCount, quality);
+    const pixelArray = createPixelArray(imageData.data);
 
-    const cmap = quantize(pixelArray, 5);
+    const cmap = quantize(pixelArray, quality);
+    console.log(cmap.palette());
 
     return cmap.palette()[0];
 }
