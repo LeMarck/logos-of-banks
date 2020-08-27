@@ -28,11 +28,15 @@ export function App(): JSX.Element {
                 const imgSrc = (Icons as any)[iconsKeys[index]];
 
                 const image = await uploadImage(imgSrc)
-                const [r, g, b] = getColor(image, quality);
+                let [r, g, b] = getColor(image, quality);
                 const isDark = (r * 299 + g * 587 + b * 114) / 1000 < 128;
+                if (!isDark) {
+                    r *= 0.95;
+                    g *= 0.95;
+                    b *= 0.95;
+                }
 
                 newColors.push(`rgba(${r}, ${g}, ${b}, .${isDark ? 4 : 6})`);
-                // newColors.push(`rgb(${r}, ${g}, ${b})`);
                 newIcons.push(imgSrc);
             }
 

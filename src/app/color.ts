@@ -50,21 +50,20 @@ export function createPixelArray(imgData: Uint8ClampedArray): Array<Array<number
     return pixelArray;
 }
 
-export function getColor(sourceImage: HTMLImageElement, quality: number = 2): [number, number, number] {
+export function getColor(sourceImage: HTMLImageElement, quality: number = 4): [number, number, number] {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d')!;
 
     canvas.width  = sourceImage.naturalWidth;
     canvas.height = sourceImage.naturalHeight;
 
-    ctx.drawImage(sourceImage, 0, 0, sourceImage.width, sourceImage.height);
+    ctx.drawImage(sourceImage, 0, 0, canvas.width, canvas.height);
 
-    const imageData = ctx.getImageData(0, 0, sourceImage.naturalWidth, sourceImage.naturalHeight);
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
     const pixelArray = createPixelArray(imageData.data);
 
     const cmap = quantize(pixelArray, quality);
-    console.log(cmap.palette());
 
     return cmap.palette()[0];
 }
