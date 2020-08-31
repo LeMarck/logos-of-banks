@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import logo from './logo.svg';
 import { getColor } from './color';
 import * as Icons from './icons';
@@ -15,7 +15,6 @@ const uploadImage = (src: string): Promise<HTMLImageElement> => new Promise((res
 export function App(): JSX.Element {
     const [icons, setIcons] = useState<Array<string>>([]);
     const [colors, setColors] = useState<Array<string>>([]);
-    const [maxColors, setMaxColors] = useState(4);
 
     const main = useCallback((quality: number) => {
         async function _main() {
@@ -50,12 +49,8 @@ export function App(): JSX.Element {
     }, []);
 
     useEffect(() => {
-        main(maxColors);
-    }, [main, maxColors]);
-
-    const onChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-        setMaxColors(Number(event.target.value));
-    }, []);
+        main(4);
+    }, [main]);
 
     return (
         <main className="App">
@@ -63,22 +58,6 @@ export function App(): JSX.Element {
                 <img src={logo} className="App-logo" alt="logo"/>
                 <p>Loading...</p>
             </section>}
-            {colors.length && <header className="App-header">
-                <span>Кол-во цветов в паитре: </span>
-                <input
-                    className="App-radio"
-                    type="radio" value="2"
-                    name="colors"
-                    checked={maxColors === 2}
-                    onChange={onChange}/>
-                <input
-                    className="App-radio"
-                    type="radio"
-                    value="4"
-                    name="colors"
-                    checked={maxColors === 4}
-                    onChange={onChange}/>
-            </header>}
             <section className="App-logos">
                 {colors.map((color, i) =>
                     <div key={i} className={'App-round'}>
