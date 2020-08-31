@@ -16,11 +16,11 @@ interface RGBAColor extends RGBColor {
     a: number
 }
 
-const rgba2rgb = ({ r, g, b, a: alpha }: RGBAColor): RGBColor => ({
-    r: (1 - alpha / 255) * 255 + (alpha / 255) * r,
-    g: (1 - alpha / 255) * 255 + (alpha / 255) * g,
-    b: (1 - alpha / 255) * 255 + (alpha / 255) * b
-});
+// const rgba2rgb = ({ r, g, b, a: alpha }: RGBAColor): RGBColor => ({
+//     r: (1 - alpha / 255) * 255 + (alpha / 255) * r,
+//     g: (1 - alpha / 255) * 255 + (alpha / 255) * g,
+//     b: (1 - alpha / 255) * 255 + (alpha / 255) * b
+// });
 
 function isAllowedColor({ r, g, b }: RGBColor): boolean {
     const firstDiff = Math.abs(r - g) < MAX_RGB_DIFF;
