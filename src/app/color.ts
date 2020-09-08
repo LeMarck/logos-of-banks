@@ -1,5 +1,5 @@
 // @ts-ignore
-import quantize from 'quantize';
+// import quantize from 'quantize';
 import * as Icons from './icons';
 
 const ALLOWABLE_COLOR_BOT_LINE = 30;
@@ -22,7 +22,7 @@ interface RGBAColor extends RGBColor {
 //     b: (1 - alpha / 255) * 255 + (alpha / 255) * b
 // });
 
-function isAllowedColor({ r, g, b }: RGBColor): boolean {
+export function isAllowedColor({ r, g, b }: RGBColor): boolean {
     const firstDiff = Math.abs(r - g) < MAX_RGB_DIFF;
     const secondDiff = Math.abs(g - b) < MAX_RGB_DIFF;
     const thirdDiff = Math.abs(r - b) < MAX_RGB_DIFF;
@@ -30,44 +30,44 @@ function isAllowedColor({ r, g, b }: RGBColor): boolean {
     return !(firstDiff && secondDiff && thirdDiff && ((r < ALLOWABLE_COLOR_BOT_LINE) || (r > ALLOWABLE_COLOR_TOP_LINE)));
 }
 
-function createPixelArray(imgData: Uint8ClampedArray): Array<Array<number>> {
-    const pixels = imgData;
-    const pixelCount = imgData.length;
-    const pixelArray = [];
+// function createPixelArray(imgData: Uint8ClampedArray): Array<Array<number>> {
+//     const pixels = imgData;
+//     const pixelCount = imgData.length;
+//     const pixelArray = [];
+//
+//     for (let i = 0; i < pixelCount; i += 4) {
+//         const r = pixels[i];
+//         const g = pixels[i + 1];
+//         const b = pixels[i + 2];
+//         // const a = pixels[i + 3];
+//
+//         // const rgb = rgba2rgb({ r, g, b, a });
+//
+//         if (isAllowedColor({ r, g, b })) {
+//             pixelArray.push([r, g, b]);
+//         }
+//     }
+//
+//     return pixelArray;
+// }
 
-    for (let i = 0; i < pixelCount; i += 4) {
-        const r = pixels[i];
-        const g = pixels[i + 1];
-        const b = pixels[i + 2];
-        // const a = pixels[i + 3];
-
-        // const rgb = rgba2rgb({ r, g, b, a });
-
-        if (isAllowedColor({ r, g, b })) {
-            pixelArray.push([r, g, b]);
-        }
-    }
-
-    return pixelArray;
-}
-
-function getColor(sourceImage: HTMLImageElement, quality: number = 4): [number, number, number] {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d')!;
-
-    canvas.width  = sourceImage.naturalWidth;
-    canvas.height = sourceImage.naturalHeight;
-
-    ctx.drawImage(sourceImage, 0, 0, canvas.width, canvas.height);
-
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-    const pixelArray = createPixelArray(imageData.data);
-
-    const cmap = quantize(pixelArray, quality);
-
-    return cmap.palette()[0];
-}
+// function getColor(sourceImage: HTMLImageElement, quality: number = 4): [number, number, number] {
+//     const canvas = document.createElement('canvas');
+//     const ctx = canvas.getContext('2d')!;
+//
+//     canvas.width  = sourceImage.naturalWidth;
+//     canvas.height = sourceImage.naturalHeight;
+//
+//     ctx.drawImage(sourceImage, 0, 0, canvas.width, canvas.height);
+//
+//     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+//
+//     const pixelArray = createPixelArray(imageData.data);
+//
+//     const cmap = quantize(pixelArray, quality);
+//
+//     return cmap.palette()[0];
+// }
 
 interface HSLColor {
     h: number;
@@ -75,28 +75,34 @@ interface HSLColor {
     l: number;
 }
 
-function RGBToHSL({ r, g, b }: RGBColor): HSLColor {
+export function RGBToHSL({ r, g, b }: RGBColor): HSLColor {
     r /= 255;
     g /= 255;
     b /= 255;
 
-    const cmin = Math.min(r, g, b);
-    const cmax = Math.max(r, g, b);
-    const delta = cmax - cmin;
+    const xMax = Math.max(r, g, b);
+    const xMin = Math.min(r, g, b);
 
-    let h = delta === 0 ? 0 : (cmax === r ? ((g - b) / delta) % 6 : (cmax === g ? (b - r) / delta + 2 : (r - g) / delta + 4))
+    const c = xMax - xMin;
+    const l = (xMax + xMin) / 2;
+
+    let h = c === 0 ? 0 : (
+        xMax === r ? (g - b) / c : (
+            xMax === g ? 2 + ((b - r) / c) : (
+                xMax === b ? 4 + ((r - g) / c) : 0
+            )
+        )
+    );
+
     h = Math.round(h * 60);
+    h = h < 0 ? h + 360 : h;
 
-    if (h < 0) h += 360;
+    let s = 0;
+    if (l > 0 && l < 1) {
+        s = (xMax - l) / Math.min(l, 1 - l);
+    }
 
-    let l = (cmax + cmin) / 2;
-
-    let s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
-
-    s = +(s * 100).toFixed(1);
-    l = +(l * 100).toFixed(1);
-
-    return { h, s, l };
+    return { h, s: Math.round(s * 100), l: Math.round(l * 100) };
 }
 
 const uploadImage = (src: string): Promise<HTMLImageElement> => new Promise((resolve, reject) => {
@@ -116,23 +122,57 @@ export async function getColors(quality: number): Promise<Array<string>> {
     for (let index = 0; index < ICONS.length; index++) {
         const imgSrc = ICONS[index];
 
-        const image = await uploadImage(imgSrc)
-        let [r, g, b] = getColor(image, quality);
-        const isDark = (r * 299 + g * 587 + b * 114) / 1000 < 128;
-        if (!isDark) {
-            r *= 0.95;
-            g *= 0.95;
-            b *= 0.95;
+        const image = await uploadImage(imgSrc);
+        let [r, g, b] = getColor2(image, quality);
+        const isLight = (r * 299 + g * 587 + b * 114) / 1000 > 128;
+        const black = 13;
+
+        if (isLight) {
+            r -= black;
+            g -= black;
+            b -= black;
         }
 
         let { h, s, l } = RGBToHSL({ r, g, b });
 
-        if (!isDark) {
-            s += 10;
+        if (isLight) {
+            s += s * 0.1;
         }
 
-        colors.push(`hsla(${h}, ${s}%, ${l}%, .${isDark ? 4 : 6})`);
+        colors.push(`hsla(${h}, ${s}%, ${l}%, .35)`);
     }
 
     return colors;
+}
+
+function getColor2(sourceImage: HTMLImageElement, quality: number = 4): [number, number, number] {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d')!;
+
+    canvas.width = sourceImage.naturalWidth < 48 ? sourceImage.naturalWidth : 48;
+    canvas.height = sourceImage.naturalHeight < 48 ? sourceImage.naturalHeight : 48;
+
+    ctx.drawImage(sourceImage, 0, 0, canvas.width, canvas.height);
+
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    const colors: Record<string, [number, number, number]> = {};
+    const colors2Count: Record<string, number> = {};
+
+    for (let index = 0; index < imageData.data.length; index += 4) {
+        const r = imageData.data[index];
+        const g = imageData.data[index + 1];
+        const b = imageData.data[index + 2];
+
+        if (isAllowedColor({ r, g, b })) {
+            const key = [r, g, b].toString();
+            colors[key] = [r, g, b];
+            colors2Count[key] = (colors2Count[key] || 0) + 1;
+        }
+    }
+
+    const [color] = Object.keys(colors2Count)
+        .sort((a, b) => colors2Count[b] - colors2Count[a]);
+
+    return colors[color];
 }
