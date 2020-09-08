@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "814dc2974db45fb4984ec8ebca4672a6",
+    "revision": "7a818d6528b4f7dcba361e2967d08306",
     "url": "/logos-of-banks/index.html"
   },
   {
-    "revision": "a758d477a3f7658636ba",
+    "revision": "ddabeea9958ab3a59c4a",
     "url": "/logos-of-banks/static/css/main.1af7ebd9.chunk.css"
   },
   {
-    "revision": "14a7854b989af422cf79",
-    "url": "/logos-of-banks/static/js/2.6bcb0df9.chunk.js"
+    "revision": "1e8c046b9768f14c8244",
+    "url": "/logos-of-banks/static/js/2.7dd23157.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/logos-of-banks/static/js/2.6bcb0df9.chunk.js.LICENSE.txt"
+    "url": "/logos-of-banks/static/js/2.7dd23157.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a758d477a3f7658636ba",
-    "url": "/logos-of-banks/static/js/main.bef2e62a.chunk.js"
+    "revision": "ddabeea9958ab3a59c4a",
+    "url": "/logos-of-banks/static/js/main.49f230d4.chunk.js"
   },
   {
     "revision": "d3c8838a194f1dd6b580",
