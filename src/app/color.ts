@@ -16,11 +16,11 @@ interface RGBAColor extends RGBColor {
     a: number
 }
 
-// const rgba2rgb = ({ r, g, b, a: alpha }: RGBAColor): RGBColor => ({
-//     r: (1 - alpha / 255) * 255 + (alpha / 255) * r,
-//     g: (1 - alpha / 255) * 255 + (alpha / 255) * g,
-//     b: (1 - alpha / 255) * 255 + (alpha / 255) * b
-// });
+const rgba2rgb = ({ r, g, b, a: alpha }: RGBAColor): RGBColor => ({
+    r: Math.round((1 - alpha) * 255 + alpha * r),
+    g: Math.round((1 - alpha) * 255 + alpha * g),
+    b: Math.round((1 - alpha) * 255 + alpha * b)
+});
 
 export function isAllowedColor({ r, g, b }: RGBColor): boolean {
     const firstDiff = Math.abs(r - g) < MAX_RGB_DIFF;
@@ -50,13 +50,14 @@ export function isAllowedColor({ r, g, b }: RGBColor): boolean {
 //
 //     return pixelArray;
 // }
-
+//
 // function getColor(sourceImage: HTMLImageElement, quality: number = 4): [number, number, number] {
 //     const canvas = document.createElement('canvas');
 //     const ctx = canvas.getContext('2d')!;
 //
-//     canvas.width  = sourceImage.naturalWidth;
-//     canvas.height = sourceImage.naturalHeight;
+//     canvas.width = sourceImage.naturalWidth < 48 ? sourceImage.naturalWidth : 48;
+//     canvas.height = sourceImage.naturalHeight < 48 ? sourceImage.naturalHeight : 48;
+//     ctx.imageSmoothingEnabled = false
 //
 //     ctx.drawImage(sourceImage, 0, 0, canvas.width, canvas.height);
 //
@@ -116,41 +117,41 @@ const uploadImage = (src: string): Promise<HTMLImageElement> => new Promise((res
 
 export const ICONS = Object.values(Icons);
 
-export async function getColors(quality: number): Promise<Array<string>> {
-    const colors: Array<string> = [];
+export async function getColors(quality: number): Promise<Array<{ color: string, isLight: boolean }>> {
+    const colors: Array<{ color: string, isLight: boolean }> = [];
 
     for (let index = 0; index < ICONS.length; index++) {
         const imgSrc = ICONS[index];
 
         const image = await uploadImage(imgSrc);
         let [r, g, b] = getColor2(image, quality);
-        const isLight = (r * 299 + g * 587 + b * 114) / 1000 > 128;
-        const black = 13;
+        let { r: red, g: green, b: blue } = rgba2rgb({ r, g, b, a: 0.35 });
+        const isLight = (r * 299 + g * 587 + b  * 114) / 1000 > 255 * 0.6;
+
+        let { h, s, l } = RGBToHSL({ r: red, g: green, b: blue });
 
         if (isLight) {
-            r -= black;
-            g -= black;
-            b -= black;
+            s *= 0.84;
+            l *= 0.89;
         }
 
-        let { h, s, l } = RGBToHSL({ r, g, b });
-
-        if (isLight) {
-            s += s * 0.1;
-        }
-
-        colors.push(`hsla(${h}, ${s}%, ${l}%, .35)`);
+        colors.push({
+            color: `hsl(${h}, ${s}%, ${l}%)`,
+            isLight,
+        });
     }
 
     return colors;
 }
 
-function getColor2(sourceImage: HTMLImageElement, quality: number = 4): [number, number, number] {
+function getColor2(sourceImage: HTMLImageElement, quality: number = 2): [number, number, number] {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d')!;
 
     canvas.width = sourceImage.naturalWidth < 48 ? sourceImage.naturalWidth : 48;
     canvas.height = sourceImage.naturalHeight < 48 ? sourceImage.naturalHeight : 48;
+
+    ctx.imageSmoothingEnabled = false;
 
     ctx.drawImage(sourceImage, 0, 0, canvas.width, canvas.height);
 
