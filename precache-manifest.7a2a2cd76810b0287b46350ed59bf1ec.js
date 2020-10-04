@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c18966e429f9c10255ab8ccd6cae1437",
+    "revision": "e1ddd123ed14981839ad69d55ea1f2a2",
     "url": "/logos-of-banks/index.html"
   },
   {
-    "revision": "a913972439325ce0105f",
-    "url": "/logos-of-banks/static/css/main.1af7ebd9.chunk.css"
+    "revision": "6eb7b21eade79569062f",
+    "url": "/logos-of-banks/static/css/main.ba402785.chunk.css"
   },
   {
-    "revision": "1e8c046b9768f14c8244",
-    "url": "/logos-of-banks/static/js/2.7dd23157.chunk.js"
+    "revision": "b83cb72575b559b574ec",
+    "url": "/logos-of-banks/static/js/2.232ce95c.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/logos-of-banks/static/js/2.7dd23157.chunk.js.LICENSE.txt"
+    "url": "/logos-of-banks/static/js/2.232ce95c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a913972439325ce0105f",
-    "url": "/logos-of-banks/static/js/main.d8227b05.chunk.js"
+    "revision": "6eb7b21eade79569062f",
+    "url": "/logos-of-banks/static/js/main.f7433b31.chunk.js"
   },
   {
     "revision": "d3c8838a194f1dd6b580",
@@ -424,6 +424,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/logos-of-banks/static/media/SDMBank.ebae1ebb.svg"
   },
   {
+    "revision": "8686ea91946ec1c8b0b24aa59c2558a9",
+    "url": "/logos-of-banks/static/media/SKB512.8686ea91.png"
+  },
+  {
     "revision": "a72cebac838af430c44c9c1f9347b752",
     "url": "/logos-of-banks/static/media/SKBBank.a72cebac.svg"
   },
@@ -562,9 +566,5 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "b769aaa01e0beff611a7d80fb5a09af0",
     "url": "/logos-of-banks/static/media/Zenit.b769aaa0.svg"
-  },
-  {
-    "revision": "5d5d9eefa31e5e13a6610d9fa7a283bb",
-    "url": "/logos-of-banks/static/media/logo.5d5d9eef.svg"
   }
 ]);

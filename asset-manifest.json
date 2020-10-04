@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/logos-of-banks/static/css/main.1af7ebd9.chunk.css",
-    "main.js": "/logos-of-banks/static/js/main.d8227b05.chunk.js",
-    "main.js.map": "/logos-of-banks/static/js/main.d8227b05.chunk.js.map",
+    "main.css": "/logos-of-banks/static/css/main.ba402785.chunk.css",
+    "main.js": "/logos-of-banks/static/js/main.f7433b31.chunk.js",
+    "main.js.map": "/logos-of-banks/static/js/main.f7433b31.chunk.js.map",
     "runtime-main.js": "/logos-of-banks/static/js/runtime-main.3201479f.js",
     "runtime-main.js.map": "/logos-of-banks/static/js/runtime-main.3201479f.js.map",
-    "static/js/2.7dd23157.chunk.js": "/logos-of-banks/static/js/2.7dd23157.chunk.js",
-    "static/js/2.7dd23157.chunk.js.map": "/logos-of-banks/static/js/2.7dd23157.chunk.js.map",
+    "static/js/2.232ce95c.chunk.js": "/logos-of-banks/static/js/2.232ce95c.chunk.js",
+    "static/js/2.232ce95c.chunk.js.map": "/logos-of-banks/static/js/2.232ce95c.chunk.js.map",
     "index.html": "/logos-of-banks/index.html",
-    "precache-manifest.b049ffefd48e3cdd05156fdbe49ba20b.js": "/logos-of-banks/precache-manifest.b049ffefd48e3cdd05156fdbe49ba20b.js",
+    "precache-manifest.7a2a2cd76810b0287b46350ed59bf1ec.js": "/logos-of-banks/precache-manifest.7a2a2cd76810b0287b46350ed59bf1ec.js",
     "service-worker.js": "/logos-of-banks/service-worker.js",
-    "static/css/main.1af7ebd9.chunk.css.map": "/logos-of-banks/static/css/main.1af7ebd9.chunk.css.map",
-    "static/js/2.7dd23157.chunk.js.LICENSE.txt": "/logos-of-banks/static/js/2.7dd23157.chunk.js.LICENSE.txt",
+    "static/css/main.ba402785.chunk.css.map": "/logos-of-banks/static/css/main.ba402785.chunk.css.map",
+    "static/js/2.232ce95c.chunk.js.LICENSE.txt": "/logos-of-banks/static/js/2.232ce95c.chunk.js.LICENSE.txt",
     "static/media/AKBars.svg": "/logos-of-banks/static/media/AKBars.43e1b8ed.svg",
     "static/media/AKIBank.svg": "/logos-of-banks/static/media/AKIBank.cc9a0a8d.svg",
     "static/media/ATB.svg": "/logos-of-banks/static/media/ATB.c99e8511.svg",
@@ -112,6 +112,7 @@
     "static/media/RostFinans.svg": "/logos-of-banks/static/media/RostFinans.d275859c.svg",
     "static/media/RusskiyStandart.svg": "/logos-of-banks/static/media/RusskiyStandart.890dac5a.svg",
     "static/media/SDMBank.svg": "/logos-of-banks/static/media/SDMBank.ebae1ebb.svg",
+    "static/media/SKB512.png": "/logos-of-banks/static/media/SKB512.8686ea91.png",
     "static/media/SKBBank.svg": "/logos-of-banks/static/media/SKBBank.a72cebac.svg",
     "static/media/SKSBank.svg": "/logos-of-banks/static/media/SKSBank.55f2e92c.svg",
     "static/media/SMPBank.svg": "/logos-of-banks/static/media/SMPBank.0e0fe86d.svg",
@@ -146,13 +147,12 @@
     "static/media/VserossiyskiyBankRazvitiyaRegionov.svg": "/logos-of-banks/static/media/VserossiyskiyBankRazvitiyaRegionov.a23a174f.svg",
     "static/media/VuzBank.svg": "/logos-of-banks/static/media/VuzBank.66757e49.svg",
     "static/media/Zapsibkombank.svg": "/logos-of-banks/static/media/Zapsibkombank.e59ebd98.svg",
-    "static/media/Zenit.svg": "/logos-of-banks/static/media/Zenit.b769aaa0.svg",
-    "static/media/logo.svg": "/logos-of-banks/static/media/logo.5d5d9eef.svg"
+    "static/media/Zenit.svg": "/logos-of-banks/static/media/Zenit.b769aaa0.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.3201479f.js",
-    "static/js/2.7dd23157.chunk.js",
-    "static/css/main.1af7ebd9.chunk.css",
-    "static/js/main.d8227b05.chunk.js"
+    "static/js/2.232ce95c.chunk.js",
+    "static/css/main.ba402785.chunk.css",
+    "static/js/main.f7433b31.chunk.js"
   ]
 }
