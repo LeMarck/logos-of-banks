@@ -1,4 +1,9 @@
-.App-round {
+.main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
   margin: 10px;
   width: 74px;
   height: 74px;
@@ -9,83 +14,11 @@
   align-items: center;
 }
 
-.App-bg {
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.App-icon {
+.image {
   border-radius: 50%;
   width: 24px;
   height: 24px;
   position: absolute;
   top: 0;
   right: 0;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-  animation: App-logo-spin infinite 20s linear;
-}
-
-.App-loading {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.App-header {
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.App-logos {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.App-radio {
-  outline: none;
-  appearance: none;
-  width: 50px;
-  height: 30px;
-  border-radius: 6px;
-  color: #000;
-  background: rgb(238, 238, 238);
-  cursor: pointer;
-}
-
-.App-radio:checked {
-  color: #FFF;
-  background: rgb(118, 88, 224);
-  font-weight: bold;
-}
-
-.App-radio:before {
-  content: attr(value);
-  font-size: 18px;
-  line-height: 30px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
 }

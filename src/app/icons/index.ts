@@ -133,6 +133,10 @@ import VserossiyskiyBankRazvitiyaRegionov from './VserossiyskiyBankRazvitiyaRegi
 import VuzBank from './VuzBank.svg';
 import Zapsibkombank from './Zapsibkombank.svg';
 import Zenit from './Zenit.svg';
+
+import SKB256 from './SKB256.png';
+import SKB512 from './SKB512.png';
+
 export {
     AKBars,
     AKIBank,
@@ -268,5 +272,8 @@ export {
     VserossiyskiyBankRazvitiyaRegionov,
     VuzBank,
     Zapsibkombank,
-    Zenit
+    Zenit,
+
+    SKB256,
+    SKB512
 };
