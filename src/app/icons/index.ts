@@ -136,6 +136,9 @@ import Zenit from './Zenit.svg';
 
 import SKB256 from './SKB256.png';
 import SKB512 from './SKB512.png';
+import Otkritie128 from './Otkritie128.png';
+import Rosbank128 from './Rosbank128.png';
+import QiwiBank256 from './QiwiBank256.png';
 
 export {
     AKBars,
@@ -275,5 +278,8 @@ export {
     Zenit,
 
     SKB256,
-    SKB512
+    SKB512,
+    Otkritie128,
+    Rosbank128,
+    QiwiBank256
 };
