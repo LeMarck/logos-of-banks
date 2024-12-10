@@ -1,6 +1,6 @@
 # Логотипы банков с цветом
 
-[![Build Status](https://travis-ci.com/LeMarck/logos-of-banks.svg?token=9ikTWv8Wabz7muHxUu4U&branch=master)](https://travis-ci.com/LeMarck/logos-of-banks)
+![GitHub Action Status](https://github.com/LeMarck/logos-of-banks/actions/workflows/deploy.yml/badge.svg)
 
 ## Алгорим
 1. Умееньшаем изображение до 48x48
