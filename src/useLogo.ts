@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 
 const CONTENT_TYPE = 'image/svg+xml';
 
@@ -33,11 +33,11 @@ function drawImage(image: HTMLImageElement, width?: number, height?: number): Ca
 
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-    return { canvas, ctx };
+    return {canvas, ctx};
 }
 
 function getImageSrc(image: HTMLImageElement): string {
-    const { canvas } = drawImage(image);
+    const {canvas} = drawImage(image);
 
     return canvas.toDataURL();
 }
@@ -55,7 +55,7 @@ function loadingImage(src: string): Promise<ImageInfo> {
             const img = new Image();
 
             img.crossOrigin = 'anonymous';
-            img.onload = (): void => resolve({ image: img, src: isSvg ? imgSrc : getImageSrc(img) })
+            img.onload = (): void => resolve({image: img, src: isSvg ? imgSrc : getImageSrc(img)})
             img.onerror = reject;
             img.src = imgSrc;
         }));
@@ -71,7 +71,7 @@ const ALLOWABLE_COLOR_BOT_LINE = 30;
 const ALLOWABLE_COLOR_TOP_LINE = 170;
 const MAX_RGB_DIFF = 15;
 
-function isAllowedColor({ red, green, blue }: RGB): boolean {
+function isAllowedColor({red, green, blue}: RGB): boolean {
     const firstDiff = Math.abs(red - green) < MAX_RGB_DIFF;
     const secondDiff = Math.abs(green - blue) < MAX_RGB_DIFF;
     const thirdDiff = Math.abs(red - blue) < MAX_RGB_DIFF;
@@ -86,7 +86,7 @@ interface RGBA extends RGB {
     alpha: number
 }
 
-const rgba2rgb = ({ red, green, blue, alpha }: RGBA): RGB => ({
+const rgba2rgb = ({red, green, blue, alpha}: RGBA): RGB => ({
     red: Math.round((1 - alpha) * 255 + alpha * red),
     green: Math.round((1 - alpha) * 255 + alpha * green),
     blue: Math.round((1 - alpha) * 255 + alpha * blue)
@@ -98,7 +98,7 @@ interface HSL {
     lightness: number;
 }
 
-function rgb2hsl({ red, green, blue }: RGB): HSL {
+function rgb2hsl({red, green, blue}: RGB): HSL {
     red /= 255;
     green /= 255;
     blue /= 255;
@@ -125,16 +125,17 @@ function rgb2hsl({ red, green, blue }: RGB): HSL {
         saturation = (xMax - lightness) / Math.min(lightness, 1 - lightness);
     }
 
-    return { hue, saturation: Math.round(saturation * 100), lightness: Math.round(lightness * 100) };
+    return {hue, saturation: Math.round(saturation * 100), lightness: Math.round(lightness * 100)};
 }
 
 const scaleSize = (size: number) => size < 48 ? size : 48;
 
 const color2key = (color: RGB): string => Object.values(color).join(':');
+
 function key2color(key: string): RGB {
     const [red, green, blue] = key.split(':').map(Number);
 
-    return { red, green, blue };
+    return {red, green, blue};
 }
 
 function getColorsHisto(imageData: ImageData): Record<string, number> {
@@ -156,7 +157,7 @@ function getColorsHisto(imageData: ImageData): Record<string, number> {
     return colors;
 }
 
-const isLight = ({ red, green, blue }: RGB) => (red * 299 + green * 587 + blue  * 114) / 1000 > 255 * 0.6;
+const isLight = ({red, green, blue}: RGB) => (red * 299 + green * 587 + blue * 114) / 1000 > 255 * 0.6;
 
 const getDominantColor = (colorsHisto: Record<string, number>): RGB =>
     key2color(Object.keys(colorsHisto).sort((a, b) => colorsHisto[b] - colorsHisto[a])[0]);
@@ -166,20 +167,20 @@ interface ILogoInfo {
     color: string;
 }
 
-function getColor({ image, src }: ImageInfo): ILogoInfo {
-    const { canvas, ctx } = drawImage(image, scaleSize(image.naturalWidth), scaleSize(image.naturalHeight));
+function getColor({image, src}: ImageInfo): ILogoInfo {
+    const {canvas, ctx} = drawImage(image, scaleSize(image.naturalWidth), scaleSize(image.naturalHeight));
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     const colors = getColorsHisto(imageData);
-    const { red, green, blue } = getDominantColor(colors);
-    const rgb = rgba2rgb({ red, green, blue, alpha: 0.35 });
-    let { hue, saturation, lightness } = rgb2hsl(rgb);
+    const {red, green, blue} = getDominantColor(colors);
+    const rgb = rgba2rgb({red, green, blue, alpha: 0.35});
+    let {hue, saturation, lightness} = rgb2hsl(rgb);
 
-    if (isLight({ red, green, blue })) {
+    if (isLight({red, green, blue})) {
         saturation *= 0.84;
         lightness *= 0.89;
     }
 
-    return { color: `hsl(${hue}, ${saturation}%, ${lightness}%)`, src }
+    return {color: `hsl(${hue}, ${saturation}%, ${lightness}%)`, src}
 }
 
 export function useLogo(src: string) {
