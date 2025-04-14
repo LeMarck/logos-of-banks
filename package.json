@@ -4,16 +4,16 @@
   "private": true,
   "source": "public/index.html",
   "dependencies": {
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "typescript": "5.7.2"
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "typescript": "5.8.3"
   },
   "devDependencies": {
-    "@types/node": "22.10.1",
-    "@types/react": "19.0.1",
-    "@types/react-dom": "19.0.2",
-    "parcel": "^2.13.2",
-    "process": "^0.11.10",
+    "@types/node": "22.14.1",
+    "@types/react": "19.1.1",
+    "@types/react-dom": "19.1.2",
+    "parcel": "2.14.4",
+    "process": "0.11.10",
     "svgo": "^3.3.2"
   },
   "scripts": {

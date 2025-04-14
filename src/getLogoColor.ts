@@ -183,12 +183,6 @@ function getColor({image, src}: ImageInfo): ILogoInfo {
     return {color: `hsl(${hue}, ${saturation}%, ${lightness}%)`, src}
 }
 
-export function useLogo(src: string) {
-    const [logoInfo, setLogoInfo] = useState<ILogoInfo | undefined>();
+const getLogoColor = (src: string) => loadingImage(src).then(getColor);
 
-    useEffect(() => {
-        loadingImage(src).then(getColor).then(setLogoInfo);
-    }, [src]);
-
-    return logoInfo;
-}
+export default getLogoColor;

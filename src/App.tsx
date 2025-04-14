@@ -1,14 +1,12 @@
-import {useLogo} from './useLogo';
+import { Suspense, use } from 'react';
+
+import getLogoColor from './getLogoColor';
 import * as Icons from './icons';
 
 import './App.css';
 
-function SvgIcon({src}: { src: string }) {
-    const logoData = useLogo(src);
-
-    if (!logoData) {
-        return <></>;
-    }
+function SvgIcon({promise}: { promise: ReturnType<typeof getLogoColor> }) {
+    const logoData = use(promise);
 
     return (
         <section className={'card'} style={{background: logoData.color}}>
@@ -24,6 +22,14 @@ function SvgIcon({src}: { src: string }) {
 
 export const App = () => (
     <main className={'main'}>
-        {Object.values(Icons).map(src => <SvgIcon src={src} key={src}/>)}
+        {Object.values(Icons).map(src => {
+            const promise = getLogoColor(src.href);
+
+            return (
+                <Suspense key={src.href}>
+                    <SvgIcon promise={promise} />
+                </Suspense>
+            )
+        })}
     </main>
 );
